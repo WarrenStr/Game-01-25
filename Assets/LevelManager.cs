@@ -8,12 +8,16 @@ public class LevelManager : MonoBehaviour
     public float cellsize = 3;
 
     public GameObject[] tiles;
-    public GameObject plane;
+    public GameObject plane = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(plane);
+
+        if (plane != null)
+        {
+            Destroy(plane);
+        }
         GenerateGrid();
     }
 
@@ -36,5 +40,7 @@ public class LevelManager : MonoBehaviour
                 Instantiate(tile, position, Quaternion.identity, transform);
             }
         }
+
+        transform.position = new Vector3 (-27, 0, -27);
     }
 }
